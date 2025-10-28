@@ -48,7 +48,8 @@ impl PositiveNonzeroInteger {
 
 // TODO: Add the correct return type `Result<(), Box<dyn ???>>`. What can we
 // use to describe both errors? Is there a trait which both errors implement?
-fn main() {
+// 这个函数返回一个结果：要么成功（返回空值 ()），要么失败（返回一个任何实现了 Error trait 的错误类型，该类型被存储在堆上的智能指针中）
+fn main() -> Result<(), Box<dyn Error>> {
     let pretend_user_input = "42";
     let x: i64 = pretend_user_input.parse()?;
     println!("output={:?}", PositiveNonzeroInteger::new(x)?);
